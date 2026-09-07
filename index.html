@@ -12,11 +12,30 @@
     <main>
         <section id="vista-caracterizacion">
             <h1>Configuración inicial</h1>
+            <form id="formulario-caracterizacion">
+                <section>
+                    <h2>Ingresos</h2>
+                    <label for="ingreso-principal">Ingreso Mensual Principal</label>
+                    <input type="number" id="ingreso-principal" name="ingreso-principal" required>
+
+                    <label for="ingresos-adicionales">Ingresos Adicionales</label>
+                    <input type="number" id="ingresos-adicionales" name="ingresos-adicionales">
+                </section>
+
+                <section>
+                    <h2>Gastos Fijos Mensuales</h2>
+                    <div id="lista-gastos-fijos"></div>
+                    <button type="button" id="agregar-gasto">Agregar gasto fijo</button>
+                </section>
+
+                <button type="submit">Guardar Configuración</button>
+            </form>
         </section>
         <section id="vista-dashboard" class="oculto">
             <h1>Panel financiero</h1>
         </section>
     </main>
+    <script src="js/caracterizacion.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

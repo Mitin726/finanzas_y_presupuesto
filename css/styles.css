@@ -1,3 +1,37 @@
 .oculto {
     display: none;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+label,
+input {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input {
+    margin-bottom: 1rem;
+}
+
+.gasto-fijo {
+    border: 1px solid #ccc;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+.opciones-compartido {
+    margin-top: 1rem;
+}
+
+button {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+}

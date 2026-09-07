@@ -16,7 +16,12 @@ function alternarVistas(mostrarDashboard) {
 }
 
 function mostrarVistaInicial() {
-    alternarVistas(Boolean(cargarPerfilFinanciero()));
+    const perfilCargado = cargarPerfilFinanciero();
+    alternarVistas(Boolean(perfilCargado));
+
+    if (perfilCargado) {
+        actualizarResumen();
+    }
 }
 
 document.addEventListener("DOMContentLoaded", mostrarVistaInicial);

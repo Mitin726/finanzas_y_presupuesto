@@ -119,6 +119,7 @@ function guardarConfiguracion(evento) {
 
     localStorage.setItem(clavePerfilFinanciero, JSON.stringify(configuracion));
     perfilFinanciero = configuracion;
+    actualizarResumen();
     alternarVistas(true);
 }
 

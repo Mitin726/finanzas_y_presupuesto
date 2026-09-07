@@ -5,15 +5,17 @@ function leerPerfilGuardado() {
 
 function actualizarResumen() {
     const perfil = leerPerfilGuardado();
+    const gastos = leerGastosDiarios();
 
     if (!perfil) {
         return;
     }
 
+    const totalGastosVariables = gastos.reduce((total, gasto) => total + gasto.monto, 0);
     document.getElementById("total-ingresos").textContent = perfil.totalIngresos;
     document.getElementById("total-gastos-fijos").textContent = perfil.totalGastosFijosReales;
-    document.getElementById("saldo-disponible").textContent = perfil.saldoDisponibleBase;
-    document.getElementById("gastos-variables").textContent = "0";
+    document.getElementById("saldo-disponible").textContent = perfil.totalIngresos - perfil.totalGastosFijosReales - totalGastosVariables;
+    document.getElementById("gastos-variables").textContent = totalGastosVariables;
 }
 
 function limpiarFormularioCaracterizacion() {
@@ -26,6 +28,9 @@ function limpiarFormularioCaracterizacion() {
 
 function resetearConfiguracion() {
     localStorage.removeItem(clavePerfilFinanciero);
+    localStorage.removeItem(claveGastosDiarios);
+    gastosDiarios = [];
+    pintarGastosDiarios();
     perfilFinanciero = null;
     limpiarFormularioCaracterizacion();
     alternarVistas(false);

@@ -22,14 +22,14 @@ function agregarGastoFijo() {
         <div class="opciones-compartido oculto">
             <label>
                 <input type="radio" name="metodo-gasto-${gastoId}" value="porcentaje" class="metodo-gasto" checked>
-                Porcentaje de aporte personal
+                Porcentaje de aporte personal (1 a 100%)
             </label>
             <label>
-                <input type="radio" name="metodo-gasto-${gastoId}" value="personas" class="metodo-gasto">
-                Cantidad de personas con quienes se divide
+                <input type="radio" name="metodo-gasto-${gastoId}" value="monto" class="metodo-gasto">
+                Monto que aportas tú (pesos)
             </label>
-            <label for="valor-metodo-${gastoId}">Valor del método</label>
-            <input type="number" id="valor-metodo-${gastoId}" class="valor-metodo">
+            <label for="monto-aportado-${gastoId}">Valor del método</label>
+            <input type="number" id="monto-aportado-${gastoId}" class="monto-aportado">
         </div>
 
         <button type="button" class="eliminar-gasto">Eliminar gasto</button>
@@ -59,10 +59,10 @@ function alternarCamposCompartido(evento) {
 
 function actualizarCampoMetodo(evento) {
     const gasto = evento.currentTarget.closest(".gasto-fijo");
-    const valorMetodo = gasto.querySelector(".valor-metodo");
-    valorMetodo.min = evento.currentTarget.value === "porcentaje" ? "1" : "2";
-    valorMetodo.max = evento.currentTarget.value === "porcentaje" ? "100" : "";
-    valorMetodo.placeholder = evento.currentTarget.value === "porcentaje" ? "Porcentaje de 1 a 100" : "Cantidad de personas mayor a 1";
+    const montoAportado = gasto.querySelector(".monto-aportado");
+    montoAportado.min = evento.currentTarget.value === "porcentaje" ? "1" : "";
+    montoAportado.max = evento.currentTarget.value === "porcentaje" ? "100" : "";
+    montoAportado.placeholder = evento.currentTarget.value === "porcentaje" ? "Porcentaje de 1 a 100" : "Monto en pesos";
 }
 
 function calcularValorReal(gasto) {
@@ -73,27 +73,27 @@ function calcularValorReal(gasto) {
     }
 
     const metodo = gasto.querySelector(".metodo-gasto:checked").value;
-    const valorMetodo = Number(gasto.querySelector(".valor-metodo").value);
+    const montoAportado = Number(gasto.querySelector(".monto-aportado").value);
 
     if (metodo === "porcentaje") {
-        return montoTotal * (valorMetodo / 100);
+        return montoTotal * (montoAportado / 100);
     }
 
-    return montoTotal / valorMetodo;
+    return montoAportado;
 }
 
 function obtenerGastosFijos() {
     return Array.from(document.querySelectorAll(".gasto-fijo")).map((gasto) => {
         const compartido = gasto.querySelector(".gasto-compartido").checked;
         const metodoSeleccionado = gasto.querySelector(".metodo-gasto:checked");
-        const valorMetodo = gasto.querySelector(".valor-metodo");
+        const montoAportado = gasto.querySelector(".monto-aportado");
 
         return {
             nombre: gasto.querySelector(".nombre-gasto").value,
             montoTotal: Number(gasto.querySelector(".monto-gasto").value),
             compartido,
             metodo: compartido ? metodoSeleccionado.value : null,
-            valorMetodo: compartido ? Number(valorMetodo.value) : null,
+            montoAportado: compartido ? Number(montoAportado.value) : null,
             valorReal: calcularValorReal(gasto)
         };
     });

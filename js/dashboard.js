@@ -12,10 +12,12 @@ function actualizarResumen() {
     }
 
     const totalGastosVariables = gastos.reduce((total, gasto) => total + gasto.monto, 0);
+    const saldoDisponible = perfil.totalIngresos - perfil.totalGastosFijosReales - totalGastosVariables;
     document.getElementById("total-ingresos").textContent = perfil.totalIngresos;
     document.getElementById("total-gastos-fijos").textContent = perfil.totalGastosFijosReales;
-    document.getElementById("saldo-disponible").textContent = perfil.totalIngresos - perfil.totalGastosFijosReales - totalGastosVariables;
+    document.getElementById("saldo-disponible").textContent = saldoDisponible;
     document.getElementById("gastos-variables").textContent = totalGastosVariables;
+    document.querySelector(".resumen-card-principal").classList.toggle("saldo-negativo", saldoDisponible < 0);
 }
 
 function limpiarFormularioCaracterizacion() {

@@ -422,6 +422,15 @@ section {
     color: var(--verde);
 }
 
+.resumen-card-principal.saldo-negativo {
+    border-color: color-mix(in srgb, var(--rojo) 45%, var(--borde));
+    box-shadow: 0 5px 18px color-mix(in srgb, var(--rojo) 15%, transparent);
+}
+
+.resumen-card-principal.saldo-negativo .valor-financiero {
+    color: var(--rojo);
+}
+
 .gastos-diarios-seccion {
     background: var(--superficie);
     border: 1px solid var(--borde);

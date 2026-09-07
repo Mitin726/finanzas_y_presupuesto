@@ -1,7 +1,10 @@
 const clavePerfilFinanciero = "perfilFinanciero";
+let perfilFinanciero = null;
 
-function existePerfilFinanciero() {
-    return localStorage.getItem(clavePerfilFinanciero) !== null;
+function cargarPerfilFinanciero() {
+    const perfilGuardado = localStorage.getItem(clavePerfilFinanciero);
+    perfilFinanciero = perfilGuardado ? JSON.parse(perfilGuardado) : null;
+    return perfilFinanciero;
 }
 
 function alternarVistas(mostrarDashboard) {
@@ -13,7 +16,7 @@ function alternarVistas(mostrarDashboard) {
 }
 
 function mostrarVistaInicial() {
-    alternarVistas(existePerfilFinanciero());
+    alternarVistas(Boolean(cargarPerfilFinanciero()));
 }
 
 document.addEventListener("DOMContentLoaded", mostrarVistaInicial);

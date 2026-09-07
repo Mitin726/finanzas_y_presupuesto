@@ -102,13 +102,24 @@ function obtenerGastosFijos() {
 function guardarConfiguracion(evento) {
     evento.preventDefault();
 
+    const ingresoPrincipal = Number(document.getElementById("ingreso-principal").value);
+    const ingresosAdicionales = Number(document.getElementById("ingresos-adicionales").value || 0);
+    const gastosFijos = obtenerGastosFijos();
+    const totalIngresos = ingresoPrincipal + ingresosAdicionales;
+    const totalGastosFijosReales = gastosFijos.reduce((total, gasto) => total + gasto.valorReal, 0);
+
     const configuracion = {
-        ingresoPrincipal: Number(document.getElementById("ingreso-principal").value),
-        ingresosAdicionales: Number(document.getElementById("ingresos-adicionales").value || 0),
-        gastosFijos: obtenerGastosFijos()
+        ingresoPrincipal,
+        ingresosAdicionales,
+        gastosFijos,
+        totalIngresos,
+        totalGastosFijosReales,
+        saldoDisponibleBase: totalIngresos - totalGastosFijosReales
     };
 
-    console.log(configuracion);
+    localStorage.setItem(clavePerfilFinanciero, JSON.stringify(configuracion));
+    perfilFinanciero = configuracion;
+    alternarVistas(true);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

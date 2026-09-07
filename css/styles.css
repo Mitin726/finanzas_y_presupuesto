@@ -180,6 +180,7 @@ select,
 .opciones-compartido,
 #formulario-caracterizacion,
 .gastos-diarios-seccion,
+.historial-gastos-fijos,
 .dashboard-navbar,
 .tabla-gastos th,
 .tabla-gastos td {
@@ -431,6 +432,15 @@ section {
     color: var(--rojo);
 }
 
+.historial-gastos-fijos {
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    box-shadow: 0 5px 18px var(--sombra-card);
+    margin-bottom: 2rem;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
 .gastos-diarios-seccion {
     background: var(--superficie);
     border: 1px solid var(--borde);
@@ -477,6 +487,16 @@ section {
     color: var(--azul);
     font-size: 0.75rem;
     font-weight: 600;
+}
+
+.tabla-historial-gastos-fijos {
+    margin-bottom: 0;
+}
+
+.tabla-historial-gastos-fijos td:nth-child(3) {
+    color: var(--texto);
+    font-size: 0.875rem;
+    font-weight: 400;
 }
 
 .tema-oscuro .table {
@@ -536,6 +556,10 @@ section {
 
     .tabla-gastos {
         min-width: 560px;
+    }
+
+    .tabla-historial-gastos-fijos {
+        min-width: 620px;
     }
 
     .boton-tema {

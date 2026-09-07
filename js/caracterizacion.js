@@ -12,7 +12,7 @@ function agregarGastoFijo() {
         <input type="text" id="nombre-gasto-${gastoId}" class="nombre-gasto" required>
 
         <label for="monto-gasto-${gastoId}">Monto total del gasto</label>
-        <input type="number" id="monto-gasto-${gastoId}" class="monto-gasto" required>
+        <input type="number" id="monto-gasto-${gastoId}" class="monto-gasto" min="0" step="0.01" required>
 
         <label>
             <input type="checkbox" class="gasto-compartido">
@@ -29,7 +29,7 @@ function agregarGastoFijo() {
                 Monto que aportas tú (pesos)
             </label>
             <label for="monto-aportado-${gastoId}">Valor del método</label>
-            <input type="number" id="monto-aportado-${gastoId}" class="monto-aportado">
+            <input type="number" id="monto-aportado-${gastoId}" class="monto-aportado" step="0.01">
         </div>
 
         <button type="button" class="eliminar-gasto">Eliminar gasto</button>
@@ -60,7 +60,7 @@ function alternarCamposCompartido(evento) {
 function actualizarCampoMetodo(evento) {
     const gasto = evento.currentTarget.closest(".gasto-fijo");
     const montoAportado = gasto.querySelector(".monto-aportado");
-    montoAportado.min = evento.currentTarget.value === "porcentaje" ? "1" : "";
+    montoAportado.min = evento.currentTarget.value === "porcentaje" ? "1" : "0";
     montoAportado.max = evento.currentTarget.value === "porcentaje" ? "100" : "";
     montoAportado.placeholder = evento.currentTarget.value === "porcentaje" ? "Porcentaje de 1 a 100" : "Monto en pesos";
 }

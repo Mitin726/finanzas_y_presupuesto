@@ -4,7 +4,12 @@
 
 body {
     font-family: Arial, sans-serif;
-    margin: 2rem;
+    margin: 1rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 section {
@@ -34,4 +39,13 @@ input {
 button {
     margin: 0.5rem 0;
     padding: 0.5rem 1rem;
+}
+
+.card-text {
+    overflow-wrap: anywhere;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
 }

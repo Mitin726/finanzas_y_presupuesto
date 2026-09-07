@@ -18,10 +18,10 @@
                 <section>
                     <h2>Ingresos</h2>
                     <label for="ingreso-principal">Ingreso Mensual Principal</label>
-                    <input type="number" id="ingreso-principal" name="ingreso-principal" required>
+                    <input type="number" id="ingreso-principal" name="ingreso-principal" min="0" step="0.01" required>
 
                     <label for="ingresos-adicionales">Ingresos Adicionales</label>
-                    <input type="number" id="ingresos-adicionales" name="ingresos-adicionales">
+                    <input type="number" id="ingresos-adicionales" name="ingresos-adicionales" min="0" step="0.01">
                 </section>
 
                 <section>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-12 col-md-3">
                         <label for="monto-gasto-diario" class="form-label">Monto</label>
-                        <input type="number" id="monto-gasto-diario" class="form-control" required>
+                        <input type="number" id="monto-gasto-diario" class="form-control" min="0" step="0.01" required>
                     </div>
                     <div class="col-12 col-md-3">
                         <label for="categoria-gasto-diario" class="form-label">Categoría</label>
